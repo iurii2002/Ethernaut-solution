@@ -1,0 +1,13 @@
+forge create src/03Coinflip/Solution.sol:CoinFlipCracker \
+ --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
+ --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
+ --constructor-args "0x8009BA8242C92760b3Ce9c07651129768D868Cd4" \
+ --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \
+ --verify 
+
+
+cast send 0x479845ee2151412CdA918faFBEC5a24Ee87F7508 "winCoinFlip()" \
+--rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
+--private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
+--gas-limit 500000 \
+--gas-price 1gwei

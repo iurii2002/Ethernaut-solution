@@ -1,0 +1,5 @@
+1. Send tx to call receive()
+cast send 0x... \
+"transfer(address,uint256)" 0x... 21000000000000000 \
+--rpc-url https://goerli.infura.io/v3/{key{}} \
+--private-key={key}

@@ -1,0 +1,13 @@
+forge create src/04Telephone/Solution.sol:SolutionTelephon \
+ --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
+ --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
+ --constructor-args "0xFFD56f6bFE3EA2C532cc2F827e0a281fa39E82E0" \
+ --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \
+ --verify 
+
+
+ cast send 0xFB35F074f29C77c830a72Dd05B0EB88A0AE88516 "changeOwnership(address _newOwner)" 0x2Cd71C554354781333019FcD78Ddccc9CEFC7F63 \
+--rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
+--private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
+--gas-limit 500000 \
+--gas-price 1gwei

