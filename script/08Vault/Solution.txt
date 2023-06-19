@@ -1,5 +1,0 @@
-cast send 0x8242cBf87EBDd4d70E2338F421400Ae74c76a693 "unlock(bytes32 _password)" "0x412076657279207374726f6e67207365637265742070617373776f7264203a29" \
---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
---gas-limit 500000 \
---gas-price 1gwei
