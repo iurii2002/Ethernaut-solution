@@ -1,6 +1,0 @@
-forge create src/07Force/Solution.sol:AttackForce \
- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \
- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \
- --constructor-args "0xf71e7e100DDA797d84DD647479688c0F5b5C7d7F" \
- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \
- --verify 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import '@openzeppelin/math/SafeMath.sol';
+import '@openzeppelin/utils/math/SafeMath.sol';
 
 contract Reentrance {
   
