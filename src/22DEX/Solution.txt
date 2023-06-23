@@ -1,0 +1,7 @@
+1. cast send 0x1b99f4B99E2D3f8156fC39589Ec186f44265C07b "swap(address,address,uint256)" {token1} {token2} balance \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+2. cast send 0x1b99f4B99E2D3f8156fC39589Ec186f44265C07b "swap(address,address,uint256)" {token2} {token1} balance \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

@@ -1,0 +1,12 @@
+1. forge create src/13GatekeeperOne/Solution.sol:AttackGatekeeperOne \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x907432CEaef6198e0cBA5bd4B76d0b202A0CEFB8" \
+ --etherscan-api-key {key} \
+ --verify 
+
+2. cast send 0x543b28576C16b1744d4830685D9d22f92035837d "attack()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 200000 \
+--gas-price 1gwei

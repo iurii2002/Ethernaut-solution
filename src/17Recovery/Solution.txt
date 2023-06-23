@@ -1,0 +1,4 @@
+1. cast send 0x35d69fC4c0ba4Df51E5506F10B8196027069ce0e "destroy(address)" {address} \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+

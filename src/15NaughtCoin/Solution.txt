@@ -1,0 +1,7 @@
+1. cast send 0xb5ede97280Cc3d6DFebcaB44672669EB8227Cee8 "approve(address,uint256)" 0xA7a86bEDF82B60c4f3aed4CE58ba1FB962b0Ad39 1000000000000000000000000  \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+2. cast send 0xb5ede97280Cc3d6DFebcaB44672669EB8227Cee8 "transferFrom(address,address,uint256)" {address} 0xb5ede97280Cc3d6DFebcaB44672669EB8227Cee8 1000000000000000000000000  \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

@@ -1,0 +1,4 @@
+cast send 0x... "Fal1out()" \
+--value 1wei \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

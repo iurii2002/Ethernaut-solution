@@ -1,0 +1,12 @@
+1. forge create src/21Shop/Solution.sol:ShopSolution \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args 150 "0xCb1c7A4Dee224bac0B47d0bE7bb334bac235F842" \
+ --etherscan-api-key {key} \
+ --verify
+
+
+
+2. cast send 0xCb1c7A4Dee224bac0B47d0bE7bb334bac235F842 "buy()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

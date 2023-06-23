@@ -1,0 +1,6 @@
+1. forge create src/28GateKeeperThree/Solution.sol:GateKeeprThreeSolution \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args 0x108780badc41B735ab83eAB0690Ab54843d0d3F5 \
+ --etherscan-api-key {key} \
+ --verify

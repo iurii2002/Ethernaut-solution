@@ -1,0 +1,6 @@
+1. forge create src/14GateKeeperTwo/Solution.sol:GatekeeperTwoAttack \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x1159Be091494c1333b0eE104bB3631d88499D2db" \
+ --etherscan-api-key {key} \
+ --verify 

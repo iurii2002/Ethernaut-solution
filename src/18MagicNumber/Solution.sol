@@ -1,15 +1,15 @@
-// // SPDX-License-Identifier: MIT
-// pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-// contract Solver {
+contract Solver {
 
-//   constructor() {}
+  constructor() {}
 
-//   function whatIsTheMeaningOfLife() public pure returns (uint) {
-//     assembly {
-//       mstore(0x0, 42)
-//       return(0x0, 32)
-//     }
-//   }
+  function whatIsTheMeaningOfLife() public pure returns (uint) {
+    assembly {
+      mstore(0x0, 42)
+      return(0x0, 32)
+    }
+  }
 
-// }
+}

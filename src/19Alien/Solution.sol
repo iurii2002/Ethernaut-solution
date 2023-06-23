@@ -1,19 +1,19 @@
-// // SPDX-License-Identifier: MIT
-// pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-// contract GetSlotLocation {
+contract GetSlotLocation {
 
-//    constructor() {}   
+constructor() {}   
 
-// function getSlotWithIndex(uint256 arraySlot, uint256 index) public pure returns (uint256 storageSlot) {
-//         storageSlot= uint256(keccak256(abi.encodePacked(arraySlot))) + index;
-//     }
+function getSlotWithIndex(uint256 arraySlot, uint256 index) public pure returns (uint256 storageSlot) {
+        storageSlot= uint256(keccak256(abi.encodePacked(arraySlot))) + index;
+    }
 
-// function getIndexWithSlot(uint256 storageSlot) public pure returns (uint256 index) {
-//         index = type(uint256).max - storageSlot;
-//     }
-// }
+function getIndexWithSlot(uint256 storageSlot) public pure returns (uint256 index) {
+        index = type(uint256).max - storageSlot - 1;
+    }
+}
 
 
 
-// // https://ethereum.stackexchange.com/questions/106526/how-to-locate-value-from-dynamic-array-in-the-storage
+// https://ethereum.stackexchange.com/questions/106526/how-to-locate-value-from-dynamic-array-in-the-storage

@@ -1,0 +1,17 @@
+1. forge create src/07Force/Solution.sol:AttackForce \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x..." \
+ --etherscan-api-key {key} \
+ --verify 
+
+
+ cast send 0x... \
+--value 1wei \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+
+ cast send 0x... "attack()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

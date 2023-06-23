@@ -1,0 +1,15 @@
+1. cast send 0x... "contribute()" 
+--value 1wei \
+--rpc-url https://goerli.infura.io/v3/{Key}  \
+--private-key {key} 
+
+2. cast send 0x... \
+--value 1wei \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+3. cast send 0x... "withdraw()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 \
+--gas-price 5gwei

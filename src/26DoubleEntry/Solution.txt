@@ -1,0 +1,28 @@
+vault - 0xbd32b9903fcd2ce3fad987b11d177437bb8b55e2
+delegatedFrom - 0x635582aA738D27A6B7ab811e5414d0416d6989f2
+legacyToken - 0x635582aA738D27A6B7ab811e5414d0416d6989f2
+forta - 0x8898dFBD9be5075b99e3fD8D28526c1E7D0454Fa
+token = 0xb66497dEC8a8D3A011259D7ccA0166908466AB24
+
+
+
+1. forge create src/26DoubleEntry/Solution.sol:MyFortaBot \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args 0xBd32b9903fcd2ce3FAD987B11d177437bb8B55e2 0x8898dFBD9be5075b99e3fD8D28526c1E7D0454Fa \
+ --etherscan-api-key {key} \
+ --verify
+
+
+
+2.  cast send 0x8898dFBD9be5075b99e3fD8D28526c1E7D0454Fa "setDetectionBot(address)" 0x0f8879912CcE1c7E906B7741E4d56BE7Ab279E05 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 
+
+
+
+  cast send 0x2Dd236Be7B9770219C799D30032C1F06F819C4Fa "sweepToken(address)" 0x85679E6569F38d672FD5f9AcEFAFf7A019969666 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 

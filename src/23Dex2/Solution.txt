@@ -1,0 +1,19 @@
+1. forge create src/23Dex2/Solution.sol:GLDToken \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args 1000000000000000000000000 \
+ --etherscan-api-key {key} \
+ --verify
+
+2. cast send 0x2CfEA9C8D8496A773dA98c8E2C999C26AFF8335b "transfer(address,uint256)" 0x4CE12A3dD03b3eaF685777f7F618223A2dBcc1FC 1 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+
+3. cast send 0x2CfEA9C8D8496A773dA98c8E2C999C26AFF8335b "approve(address,uint256)" 0x4CE12A3dD03b3eaF685777f7F618223A2dBcc1FC 100000 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+4. cast send 0x..... "swap(address,address,uint256)" 0x2CfEA9C8D8496A773dA98c8E2C999C26AFF8335b 0x4CE12A3dD03b3eaF685777f7F618223A2dBcc1FC 100000 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

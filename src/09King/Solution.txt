@@ -1,0 +1,11 @@
+1. forge create src/09King/Solution.sol:KingCracker \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x67E501a202a4A5D1248205Db6Ca9a41DC5700Da1" \
+ --etherscan-api-key {key} \
+ --verify 
+
+2. cast send 0xE30B8024d2D715FDAcd50DB6c3BF9D16b5A1481f "sendToKing()" \
+--value 0.011ether \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

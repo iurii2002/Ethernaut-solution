@@ -1,0 +1,11 @@
+1. forge create src/04Telephone/Solution.sol:SolutionTelephon \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x..." \
+ --etherscan-api-key {key} \
+ --verify 
+
+
+2. cast send 0x... "changeOwnership(address _newOwner)" 0x... \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

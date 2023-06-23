@@ -1,0 +1,172 @@
+forge create src/18MagicNumber/Solution.sol:Solver \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --etherscan-api-key {key} \
+ --verify 
+
+
+ current bytecode 
+ 0x
+ 6080604052348015600f57600080fd5b506004361060285760003560e01c8063650500c114602d575b600080fd5b60336045565b60405190815260200160405180910390f35b6000602a60005260206000f3fea2646970667358221220f3bf3975ae927f9186de8a9ab767e764033ba691405855fd34b9698bd5e75ef864736f6c634300080c0033
+
+
+[1] PUSH1 0x80  //push number 128 in stack
+[3] PUSH1 0x40  //push number 64 in stack
+[4] MSTORE // store 0x80 into memory on position 0x40
+
+[5] CALLVALUE // check value of tx
+[6] DUP1  // check value of tx
+[7] ISZERO  // check value of tx
+[9] PUSH1 0x0f  // check value of tx
+[10] JUMPI  // check value of tx
+[12] PUSH1 0x00  // check value of tx
+[13] DUP1  // check value of tx
+[14] REVERT  // check value of tx
+
+// JUMPI is exactly the same, but there must not be a “0” in the second position of the stack,
+
+[15] JUMPDEST  // check value of tx / Jump here from 10 
+[16] POP   // check value of tx / Clear the value from stack
+
+[18] PUSH1 0x04  // check if calldata > 4 bytes (not empty)   Push 4 to stack
+[19] CALLDATASIZE  // check if calldata > 4 bytes (not empty)   Push calldatasize to stack
+[20] LT  // check if calldata > 4 bytes (not empty)  Compare 0 and 1 stack parameters (a < b) and stores in stack
+[22] PUSH1 0x28  // check if calldata > 4 bytes (not empty) Push 40, the line whitch will be used if no data
+[23] JUMPI  // check if calldata > 4 bytes (not empty) Jump to 40
+
+[25] PUSH1 0x00   // push 0 to stack
+[26] CALLDATALOAD  // stores calldata to stack position 0
+[28] PUSH1 0xe0  // push 224 in stack
+[29] SHR  // shift value right value. Shifts calldata to 224 bytes -> adds 54 zero to calldata
+[30] DUP1 // duplicate 0x00000000000000000000000000000000000000000000000000000000650500c1
+[35] PUSH4 0x650500c1   // push function whatIsTheMeaningOfLife hex to stack
+[36] EQ // compate stack 0 and 1 push 1 to stack0 if true, or 0 to stack0 if false
+[38] PUSH1 0x2d  //push 45 to stack 
+[39] JUMPI  //jumpdest 45
+
+[40] JUMPDEST  // dest if no data provided
+[42] PUSH1 0x00  // dest if no data provided Push 0 to stack
+[43] DUP1  // dest if no data provided duplicate
+[44] REVERT  // dest if no data provided end execution since there is no funciton to execute
+
+[45] JUMPDEST  //jump1 39
+currently in stack 0x00000000000000000000000000000000000000000000000000000000650500c1
+[47] PUSH1 0x33  // push 51 to stack 
+[49] PUSH1 0x45  // push 69 to stack 
+[50] JUMP // jump to 69
+
+[51] JUMPDEST   // dont know why it is here
+[53] PUSH1 0x40
+[54] MLOAD
+[55] SWAP1
+[56] DUP2
+[57] MSTORE
+[59] PUSH1 0x20
+[60] ADD
+[62] PUSH1 0x40
+[63] MLOAD
+[64] DUP1
+[65] SWAP2
+[66] SUB
+[67] SWAP1
+[68] RETURN
+
+
+[69] JUMPDEST  //jump from 50
+[71] PUSH1 0x00  // push 0 to stack 
+[73] PUSH1 0x2a  // push 42 to stack 
+[75] PUSH1 0x00  // push 0 to stack
+[76] MSTORE // stores 42 to 0 position of memory?
+[78] PUSH1 0x20 // push 32 to stack
+[80] PUSH1 0x00 // push 0 to stack
+[81] RETURN //return
+[82] 'fe'(Unknown Opcode)
+[83] LOG2
+[89] PUSH5 0x6970667358
+[90] '22'(Unknown Opcode)
+[91] SLT
+[92] SHA3
+[93] RETURN
+[94] 'bf'(Unknown Opcode)
+[95] CODECOPY
+[118] PUSH22 0xae927f9186de8a9ab767e764033ba691405855fd34b9
+[129] PUSH10 0x8bd5e75ef864736f6c63
+[130] NUMBER
+[131] STOP
+[132] ADDMOD
+[133] '0c'(Unknown Opcode)
+[134] STOP
+[135] CALLER
+
+
+
+
+
+[1] PUSH1 0x80  //push number 128 in stack
+[2] PUSH1 0x40  //push number 64 in stack
+[3] MSTORE // store 0x80 into memory on position 0x40
+[4] PUSH1 0x00  // push 0 to stack 
+[5] PUSH1 0x2a  // push 42 to stack 
+[6] PUSH1 0x00  // push 0 to stack
+[7] MSTORE // stores 42 to 0 position of memory?
+[8] PUSH1 0x20 // push 32 to stack
+[9] PUSH1 0x00 // push 0 to stack
+[10] RETURN //return  32 bytes from 0 offset memory
+
+creation
+0x6080604052348015600f57600080fd5b5060888061001e6000396000f3fe
+execution
+
+0x602a60005260206000f3
+0x              604260805260206080f3
+
+0x6080604052348015600f57600080fd5b5060888061001e6000396000f3fe60806040526000602a60005260206000f3
+
+
+
+cast send 0x6080604052348015600f57600080fd5b5060888061001e6000396000f3fe60806040526000602a60005260206000f3 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+
+creation
+
+[1] PUSH1 0x80
+[3] PUSH1 0x40
+[4] MSTORE
+[5] CALLVALUE
+[6] DUP1
+[7] ISZERO
+[9] PUSH1 0x0f
+[10] JUMPI
+[12] PUSH1 0x00
+[13] DUP1
+[14] REVERT
+
+[15] JUMPDEST
+[16] POP
+
+[18] PUSH1 0x88   push 136
+[19] DUP1
+[22] PUSH2 0x001e  push 30
+[24] PUSH1 0x00
+[25] CODECOPY
+[27] PUSH1 0x00
+[28] RETURN
+[29] 'fe'(Unknown Opcode)
+
+
+SOLUTION:
+
+creation
+0x6080604052348015600f57600080fd5b50600a8061001e6000396000f3fe
+
+execution
+0x602a60005260206000f3
+
+0x6080604052348015600f57600080fd5b50600a8061001e6000396000f3fe604260005260206000f3
+
+
+cast send 0x6080604052348015600f57600080fd5b50600a8061001e6000396000f3fe604260005260206000f3 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 

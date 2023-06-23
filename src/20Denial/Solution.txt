@@ -1,0 +1,5 @@
+1. forge create src/20Denial/Solution.sol:DenialSolution \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --etherscan-api-key {key} \
+ --verify 

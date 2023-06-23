@@ -49,8 +49,8 @@ Date:   Mon Jun 19 18:04:33 2023 +0300
 [31m-[m
 [31m-cast send 0x40c2E9004eba16ff587c230A1a4Cb52D206a3922 "contribute()" \[m
 [31m---value 1wei \[m
-[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
 [31m---gas-limit 500000 \[m
 [31m---gas-price 5gwei[m
 [31m-[m
@@ -80,8 +80,8 @@ Date:   Mon Jun 19 18:04:33 2023 +0300
 [36m@@ -1,14 +0,0 @@[m
 [31m-cast send 0xAACBF0Dae648dC160B24e2f6CC4A186aBE0e6eD6 "Fal1out()" \[m
 [31m---value 1wei \[m
-[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
 [31m---gas-limit 500000 \[m
 [31m---gas-price 5gwei[m
 [31m-[m
@@ -100,16 +100,16 @@ Date:   Mon Jun 19 18:04:33 2023 +0300
 [1m+++ /dev/null[m
 [36m@@ -1,13 +0,0 @@[m
 [31m-forge create src/03Coinflip/Solution.sol:CoinFlipCracker \[m
-[31m- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- --rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m- --private-key {key} \[m
 [31m- --constructor-args "0x8009BA8242C92760b3Ce9c07651129768D868Cd4" \[m
-[31m- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \[m
+[31m- --etherscan-api-key {key} \[m
 [31m- --verify [m
 [31m-[m
 [31m-[m
 [31m-cast send 0x479845ee2151412CdA918faFBEC5a24Ee87F7508 "winCoinFlip()" \[m
-[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
 [31m---gas-limit 500000 \[m
 [31m---gas-price 1gwei[m
 \ No newline at end of file[m
@@ -120,16 +120,16 @@ Date:   Mon Jun 19 18:04:33 2023 +0300
 [1m+++ /dev/null[m
 [36m@@ -1,13 +0,0 @@[m
 [31m-forge create src/04Telephone/Solution.sol:SolutionTelephon \[m
-[31m- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- --rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m- --private-key {key} \[m
 [31m- --constructor-args "0xFFD56f6bFE3EA2C532cc2F827e0a281fa39E82E0" \[m
-[31m- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \[m
+[31m- --etherscan-api-key {key} \[m
 [31m- --verify [m
 [31m-[m
 [31m-[m
-[31m- cast send 0xFB35F074f29C77c830a72Dd05B0EB88A0AE88516 "changeOwnership(address _newOwner)" 0x2Cd71C554354781333019FcD78Ddccc9CEFC7F63 \[m
-[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m---private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- cast send 0xFB35F074f29C77c830a72Dd05B0EB88A0AE88516 "changeOwnership(address _newOwner)" {address} \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key {key} \[m
 [31m---gas-limit 500000 \[m
 [31m---gas-price 1gwei[m
 \ No newline at end of file[m
@@ -142,9 +142,9 @@ Date:   Mon Jun 19 18:04:33 2023 +0300
 [31m-1. Send tx to call fallback()[m
 [31m-[m
 [31m-cast send 0x3A127bbaD4774157A841e27302B9ed16246b3E7d \[m
-[31m-"pwn()" 0x2Cd71C554354781333019FcD78Ddccc9CEFC7F63 \[m
-[31m---rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m---private-key=0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m-"pwn()" {address} \[m
+[31m---rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m---private-key={key} \[m
 [31m---gas-limit 500000 \[m
 [31m---gas-price 5gwei[m
 \ No newline at end of file[m
@@ -155,10 +155,10 @@ Date:   Mon Jun 19 18:04:33 2023 +0300
 [1m+++ /dev/null[m
 [36m@@ -1,6 +0,0 @@[m
 [31m-forge create src/07Force/Solution.sol:AttackForce \[m
-[31m- --rpc-url https://goerli.infura.io/v3/6bf928d2e56c4a4ea4a7403a6c4d5033 \[m
-[31m- --private-key 0xfd7af2aa395aed437d9b3baa99d96a63d098e92eadb67e374cc875561f7fb767 \[m
+[31m- --rpc-url https://goerli.infura.io/v3/{key} \[m
+[31m- --private-key {key} \[m
 [31m- --constructor-args "0xf71e7e100DDA797d84DD647479688c0F5b5C7d7F" \[m
-[31m- --etherscan-api-key 8DK386V1G5K5BEKVTTW69J3A27X14REJMF \[m
+[31m- --etherscan-api-key {key} \[m
 [31m- --verify [m
 [1mdiff --git a/src/05Token/Task.sol b/src/05Token/Task.sol[m
 [1mindex 16de1d5..c5620c4 100644[m

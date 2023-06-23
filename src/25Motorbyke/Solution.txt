@@ -1,0 +1,19 @@
+1. cast send 0xc7dbf4faa5cefd68ce4cd3b6f17df5f009a9645c "initialize()" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key 0x.... \
+--gas-limit 500000 
+
+
+2. forge create src/25Motorbyke/Solution.sol:NewEngine \
+ --rpc-url https://goerli.infura.io/v3/{key} \
+ --private-key {key} \
+ --constructor-args {address} 0xFba4b19B5Bca8a2dCc76E824F4CBA91106a52D6f \
+ --etherscan-api-key {key} \
+ --verify
+
+
+3. cast send 0xc7dbf4faa5cefd68ce4cd3b6f17df5f009a9645c "upgradeToAndCall(address,bytes)" 0x4B42d3B3300B865ae04a38e48ae807dB76cE4F13 0x2b68b9c6 \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key 0x... \
+--gas-limit 500000 
+

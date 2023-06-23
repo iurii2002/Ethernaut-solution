@@ -1,0 +1,36 @@
+level - 0x0Ec3c444F079F8d521e59eF3fa438544e41fdd3b
+proxy - 0xfa9BDf6Fa8aaf6C3e50D8b9140f4BA7A12763bA6
+owner - 0x4dF32584890A0026e56f7535d0f2C6486753624f
+
+deposit()
+0xd0e30db0
+
+multicall(bytes[])
+0xac9650d8
+
+execute(address,uint256,bytes)
+0xb61d27f6
+
+
+cast send 0x0Ec3c444F079F8d521e59eF3fa438544e41fdd3b "proposeNewAdmin(address)" {address} \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+
+cast send 0x0Ec3c444F079F8d521e59eF3fa438544e41fdd3b "addToWhitelist(address)" {address} \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} 
+
+
+
+cast send 0x0Ec3c444F079F8d521e59eF3fa438544e41fdd3b "multicall(bytes[])" "[0xd0e30db0,0xac9650d80000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004d0e30db000000000000000000000000000000000000000000000000000000000]" \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--value 0.001ether \
+--gas-limit 500000 
+
+
+cast send 0x0Ec3c444F079F8d521e59eF3fa438544e41fdd3b "setMaxBalance(uint256)" {address} \
+--rpc-url https://goerli.infura.io/v3/{key} \
+--private-key {key} \
+--gas-limit 500000 
